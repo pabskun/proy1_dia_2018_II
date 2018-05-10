@@ -1,0 +1,52 @@
+html{
+    font-family : verdana;
+}
+
+/* Inicio de estilos del header */
+header{
+    background : #2d3436;
+    padding: 15px 20px 15px 20px;
+    margin-bottom: 25px;
+}
+header nav a{
+    color: #ffffff;
+    text-decoration: none;
+    margin-right: 30px; 
+}
+header nav a:hover{
+    border-bottom: 2px solid #d63031;
+    padding-bottom: 3px;
+}
+header nav a:nth-child(2):hover{
+    border-bottom: 2px solid #fdcb6e;
+}
+header nav a:nth-child(3):hover{
+    border-bottom: 2px solid #0984e3;
+}
+/* Fin de estilos del header */
+
+/* Inicio estilos del main */
+main{
+    padding: 0px 20px;
+}
+main h1{
+    margin-bottom: 20px;
+    font-size: 22px;
+    font-weight: bold; /* negrita */
+}
+main section{
+    margin-bottom: 20px;
+}
+main section h2{
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+main section p{
+    margin-bottom: 15px;
+    line-height: 24px;
+}
+main section ul li{
+    line-height: 24px;
+}
+
+
