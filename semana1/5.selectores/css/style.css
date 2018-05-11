@@ -1,0 +1,85 @@
+html{
+    font-family : tahoma;
+}
+
+/* Inicio de estilos del header */
+header{
+    background : #2d3436;
+    padding: 15px 20px 15px 20px;
+    margin-bottom: 25px;
+}
+header nav a{
+    color: #ffffff;
+    text-decoration: none;
+    margin-right: 30px; 
+}
+header nav a:hover{
+    border-bottom: 2px solid #d63031;
+    padding-bottom: 3px;
+}
+header nav a:nth-child(2):hover{
+    border-bottom: 2px solid #fdcb6e;
+}
+header nav a:nth-child(3):hover{
+    border-bottom: 2px solid #0984e3;
+}
+/* Fin de estilos del header */
+
+/* Inicio estilos del main */
+main{
+    
+}
+main h1{
+    margin-bottom: 20px;
+    font-size: 22px;
+    font-weight: bold; /* negrita */
+}
+main section{
+    margin-bottom: 20px;
+}
+main section h2{
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+main section p{
+    margin-bottom: 15px;
+    line-height: 24px;
+}
+main section ul li{
+    line-height: 24px;
+}
+main #sct_caracteristicas h2{
+    background: #515151; 
+    padding: 15px 0px;
+    text-align: center;
+    color: #ffffff;
+}
+main #sct_caracteristicas p{
+    text-align: center;
+    color: #606060;
+    padding: 49px 40px;
+}
+main #sct_caracteristicas h3{
+    font-size: 28px;
+    background: #515151; 
+    width: 30%;
+    padding: 91px 0px;
+    text-align: center;
+    color: #fff;
+}
+main #sct_caracteristicas p.texto_descripcion{
+    padding: 69px 5.2%;
+    width: 59.6%;
+    background: #d7d7d7;
+}
+
+
+/* Clases generales */
+.flow_root{
+    display: flow-root;
+}
+.float_left{
+    float: left;
+}
+
+
