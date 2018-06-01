@@ -1,0 +1,39 @@
+html{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 16px;
+}
+h1{
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+p{
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+#sct_registrar{
+    display: flow-root;
+}
+#sct_registrar form input{
+    height: 30px;
+    margin-bottom: 15px;
+}
+#sct_registrar form input.full-width{
+    width: 260px;
+}
+#sct_registrar form button{
+    height: 35px;
+    width: 120px;
+    background: #82589F; 
+    cursor: pointer;
+    color: #fff;
+    font-size: 16px;
+}
+#sct_registrar form button:hover{
+    background: #D6A2E8; 
+}
+.column_2{
+    width: 48%;
+    float: left;
+}
