@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <h1>Registro</h1>
+    <form>
+        <div>
+            <label for="txtNombre">Nombre</label>
+            <input type="text" id="txtNombre" required>
+        </div>
+        <div>
+            <label for="txtFecha">Fecha nacimiento</label>
+            <input type="date" id="txtFecha" required>
+        </div>
+        <div>
+            <label for="txtEdad">Edad</label>
+            <input type="number" id="txtEdad" min="0" max="120" required>
+        </div>
+        <div>
+            <label for="txtContrasenna">Contraseña</label>
+            <input type="password" id="txtContrasenna" required>
+        </div>
+        <div>
+            <label for="txtConfirmacion">Confirmación</label>
+            <input type="password" id="txtConfirmacion" required>
+        </div>
+
+        <button type="button" id="btnRegistrar">Registrar</button>
+    </form>
+
+    <!-- Script externo para sweet alert 2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2"></script>
+    <script src="js/servicio.js"></script>
+    <script src="js/controlador.js"></script>
+</body>
+
+</html>
