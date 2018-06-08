@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Citas</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <form>
+        <div>
+            <label for="txtPaciente">Paciente</label>
+            <input type="text" id="txtPaciente">
+        </div>
+        <div>
+            <label for="txtFecha">Fecha</label>
+            <input type="date" id="txtFecha">
+        </div>
+        <div>
+            <label for="txtHora">Hora</label>
+            <input type="time" id="txtHora">
+        </div>
+        <div>
+            <label for="txtEtiqueta">Etiqueta</label>
+            <input type="color" id="txtEtiqueta">
+        </div>
+      
+        <button type="button" id="btnRegistrar">Registrar</button>
+    </form>
+    <table id="tblPersonas">
+        <thead>
+            <tr>
+                <th>Paciente</th>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>#</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script src="js/servicio.js"></script>
+    <script src="js/controlador.js"></script>
+</body>
+</html>
