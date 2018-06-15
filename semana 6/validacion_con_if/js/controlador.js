@@ -1,5 +1,5 @@
 'use strict';
-
+mostrarListaPersonas();
 let botonRegistrar = document.querySelector('#btnRegistrar');
 botonRegistrar.addEventListener('click', obtenerDatos);
 
@@ -23,6 +23,7 @@ let regexContrasenna = /^[a-zA-Z0-9]{8,12}$/;
 
 function obtenerDatos(){
     let bError = false;
+    let aInfoPersona = [];
 
     sNombre = inputNombre.value;
     dFechaNacimiento = inputNacimiento.value;
@@ -40,18 +41,17 @@ function obtenerDatos(){
             confirmButtonText: 'Entendido'
           });
     }else{
+        aInfoPersona.push(sNombre, dFechaNacimiento, nEdad, sContrasenna);
+        registrarPersona(aInfoPersona);
         swal({
             title: 'Registro correcto',
             text: 'El usuario se ha registrado de forma correcta',
             type: 'success',
             confirmButtonText: 'Entendido'
           });
-        console.log(sNombre);
-        console.log(dFechaNacimiento);
-        console.log(nEdad);
-        console.log(sContrasenna);
-        console.log(sConfirmacion);
+    
         limpiarFormulario();
+        mostrarListaPersonas();
     }
     
 };
@@ -124,4 +124,22 @@ function limpiarFormulario(){
     inputNacimiento.value = '';
     inputContrasenna.value = '';
     inputConfirmacion.value = '';
+};
+
+function mostrarListaPersonas(){
+    let listaPersonas = obtenerListaPersonas();
+    let tbody = document.querySelector('#tblPersonas tbody');
+    tbody.innerHTML = '';
+
+    for(let i = 0; i < listaPersonas.length; i++){
+        let fila = tbody.insertRow();
+
+        let celdaNombre = fila.insertCell();
+        let celdaFecha = fila.insertCell();
+        let celdaEdad = fila.insertCell();
+
+        celdaNombre.innerHTML = listaPersonas[i][0];
+        celdaFecha.innerHTML = listaPersonas[i][1];
+        celdaEdad.innerHTML = listaPersonas[i][2];
+    }
 };
