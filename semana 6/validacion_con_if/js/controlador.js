@@ -137,9 +137,33 @@ function mostrarListaPersonas(){
         let celdaNombre = fila.insertCell();
         let celdaFecha = fila.insertCell();
         let celdaEdad = fila.insertCell();
+        let celdaConfiguracion = fila.insertCell();
+
+        let dFechaNacimiento = new Date(listaPersonas[i][1]);
+        let nMes = dFechaNacimiento.getUTCMonth() + 1;
+        let nDia = dFechaNacimiento.getUTCDate();
+        let nAnno = dFechaNacimiento.getUTCFullYear();
 
         celdaNombre.innerHTML = listaPersonas[i][0];
-        celdaFecha.innerHTML = listaPersonas[i][1];
+        celdaFecha.innerHTML = nDia + '/' + nMes + '/' + nAnno;
         celdaEdad.innerHTML = listaPersonas[i][2];
+
+        //Creación de los botones de configuración
+        let botonEditar = document.createElement('a');
+        botonEditar.href = '#';
+        botonEditar.classList.add('far');
+        botonEditar.classList.add('fa-edit');
+
+        celdaConfiguracion.appendChild(botonEditar);
+        
+
+
+        let botonInactivar = document.createElement('a');
+        botonInactivar.href = '#';
+        botonInactivar.classList.add('far');
+        botonInactivar.classList.add('fa-trash-alt');
+
+        celdaConfiguracion.appendChild(botonInactivar);
+ 
     }
 };

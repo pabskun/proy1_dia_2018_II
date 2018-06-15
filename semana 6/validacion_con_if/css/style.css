@@ -1,3 +1,35 @@
+html{
+    font-size: 18px;
+    font-family: verdana;
+}
 .errorInput{
     border: 2px solid #d63031;
+}
+table tr{
+    height: 40px;
+}
+table th, table td{
+    padding: 10px;
+    text-align: center;
+}
+table thead tr{
+    border-top : 2px solid #000;
+    border-bottom : 2px solid #000;
+}
+table thead tr th{
+    color: #D70060;
+}
+table tbody tr{
+    border-bottom:  2px solid #D0D102;
+}
+table tbody tr:hover{
+    background: #D70060;
+    color: #fff;
+}
+table tbody tr td a{
+    color: #000;
+    margin-right: 10px;
+}
+table tbody tr td a:hover{
+    color: #fff;
 }
