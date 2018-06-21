@@ -8,12 +8,40 @@ let inputPrecio = document.querySelector('#txtPrecio');
 botonRegistrar.addEventListener('click' , obtenerDatos);
 
 function obtenerDatos(){
+    let bError = false;
     let sTitulo = inputTitulo.value;
     let sEditorial = inputEditorial.value;
     let nPrecio = Number(inputPrecio.value);
 
-    registrarLibro(sTitulo , sEditorial, nPrecio);
-    mostrarListaLibros()    
+    //bError = validar();
+    
+    if(bError == true){
+        swal({
+            title: 'Registro incorrecto',
+            text: 'No se pudo registrar el usuario, revise los campos en rojo',
+            type: 'warning',
+            confirmButtonText: 'Entendido'
+          });
+    }else{
+        let respuesta = registrarLibro(sTitulo , sEditorial, nPrecio);
+        if(respuesta.success == true){
+            swal({
+                title: 'Registro correcto',
+                text: respuesta.msg,
+                type: 'success',
+                confirmButtonText: 'Entendido'
+              });
+        }else{
+            swal({
+                title: 'Registro incorrecto',
+                text: respuesta.msg,
+                type: 'error',
+                confirmButtonText: 'Entendido'
+              });
+        }
+        mostrarListaLibros();  
+    }
+  
 };
 
 function mostrarListaLibros(){

@@ -1,6 +1,7 @@
 'use strict';
 
 function registrarLibro(pTitulo, pEditorial, pPrecio){
+    let respuesta = '';
     let peticion = $.ajax({
         url: 'http://localhost:4000/api/registrar_libro',
         type: 'post',
@@ -15,12 +16,14 @@ function registrarLibro(pTitulo, pEditorial, pPrecio){
       });
     
       peticion.done(function(response){
-        
+       respuesta = response;
       });
     
-      peticion.fail(function(){
+      peticion.fail(function(response){
        
       });
+
+      return respuesta;
 };
 
 function obtenerLibros(){
