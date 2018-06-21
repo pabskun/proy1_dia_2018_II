@@ -14,7 +14,7 @@ const express = require('express'),
  * Se definen las variables necesarias para la conexión con MongoDB
  */
 let db = mongoose.connection,
-    dburl = 'mongodb://proyecto:1proyecto9@ds241019.mlab.com:41019/proyectodia',
+    dburl = 'mongodb://pabs:1biblioteca9@ds163680.mlab.com:63680/bd_biblioteca',
     port = 4000;
 
 /**
@@ -62,13 +62,13 @@ app.use( function(req, res, next) {
 /**
  * Exportams todas las rutas dentro del index.js
  */
-const usuarios = require('./components/users/users.route');
+const libros = require('./components/books/books.route');
 
 
 /**
  * Le indicamos que le de acceso externo a las rutas inicializadas
  */
-app.use('/api', usuarios);
+app.use('/api', libros);
 
 
 // Se guarda todo lo que se ha realizado
