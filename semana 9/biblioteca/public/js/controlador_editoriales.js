@@ -15,20 +15,28 @@ function obtenerDatos(){
     mostrar_editoriales();
 };
 
-function mostrar_editoriales(){
-    let lista_editoriales = listar_editoriales();
+async function mostrar_editoriales(){
+    
+    try {
+        //const lista_editoriales = await axios.get('http://localhost:4000/api/listar_editoriales');
+        const lista_editoriales = await listar_editoriales();
+        let tbody = document.querySelector('#tblEditoriales tbody');
+        tbody.innerHTML = '';
+    
+        for(let i = 0; i < lista_editoriales.data.length; i++){
+            let fila = tbody.insertRow();
+    
+            let celdaEditorial = fila.insertCell();
+            let celdaPais = fila.insertCell();
+    
+            celdaEditorial.innerHTML = lista_editoriales.data[i]['nombre'];
+            celdaPais.innerHTML = lista_editoriales.data[i]['pais'];
+        }
+      } catch (error) {
+        console.error(error);
+      }
 
-    let tbody = document.querySelector('#tblEditoriales tbody');
-    tbody.innerHTML = '';
-
-    for(let i = 0; i < lista_editoriales.length; i++){
-        let fila = tbody.insertRow();
-
-        let celdaEditorial = fila.insertCell();
-        let celdaPais = fila.insertCell();
-
-        celdaEditorial.innerHTML = lista_editoriales[i][0];
-        celdaPais.innerHTML = lista_editoriales[i][1];
-    };
+    
+    
 
 };

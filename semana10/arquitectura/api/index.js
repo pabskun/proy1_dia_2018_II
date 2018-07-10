@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 /**
  * Exportamos todas las dependencias necesarias para establecer la conexión
@@ -14,7 +14,7 @@ const express = require('express'),
  * Se definen las variables necesarias para la conexión con MongoDB
  */
 let db = mongoose.connection,
-    dburl = 'mongodb://pabs:1biblioteca9@ds163680.mlab.com:63680/bd_biblioteca',
+    dburl = 'mongodb://proyecto:1proyecto9@ds163410.mlab.com:63410/db_proyecto_noche',
     port = 4000;
 
 /**
@@ -62,20 +62,18 @@ app.use( function(req, res, next) {
 /**
  * Exportams todas las rutas dentro del index.js
  */
-const libros = require('./components/books/books.route');
-const editoriales = require('./components/publishers/publishers.route');
+const usuarios = require('./components/users/users.route');
 
 
 /**
  * Le indicamos que le de acceso externo a las rutas inicializadas
  */
-app.use('/api', libros);
-app.use('/api', editoriales);
+app.use('/api', usuarios);
 
 
 // Se guarda todo lo que se ha realizado
 module.exports = app;
 
 function _server(){
-  console.log('Conexión establecida en el puerto ' + port);
+  console.log('Conexión con el back-end establecida en el puerto ' + port);
 };

@@ -68,8 +68,8 @@ function mostrarEditoriales(){
     let listaEditoriales = listar_editoriales();
     let selectEditorial = document.querySelector('#lstEditorial');
     for(let i=0; i < listaEditoriales.length; i++){
-        let nuevaOpcion = new Option(listaEditoriales[i][0]);
-        nuevaOpcion.value = listaEditoriales[i][0];
+        let nuevaOpcion = new Option(listaEditoriales[i]['nombre']);
+        nuevaOpcion.value = listaEditoriales[i]['nombre'];
         selectEditorial.appendChild(nuevaOpcion);
     }
 };
