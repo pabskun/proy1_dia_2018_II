@@ -8,6 +8,7 @@ Responsabilidades del controlador
 */
 
 'use strict';
+let listaPersonas = obtenerListaPersonas();
 imprimirListaPersonas();
 const botonRegistrar = document.querySelector('#btnRegistrar');
 
@@ -56,13 +57,14 @@ function obtenerDatos(){
             text: 'El usuario se registró adecuadamente',
             confirmButtonText : 'Entendido'
         });
+        listaPersonas = obtenerListaPersonas();
         imprimirListaPersonas();
         limpiarFormulario();
     }
     
 };
 function imprimirListaPersonas(pFiltro){
-    let listaPersonas = obtenerListaPersonas();
+    
     let tbody = document.querySelector('#tblPersonas tbody');
     if(!pFiltro){
         pFiltro = '';
@@ -82,8 +84,10 @@ function imprimirListaPersonas(pFiltro){
             let imagen = document.createElement('img');
             imagen.src = listaPersonas[i]['foto'];
             imagen.classList.add('imageSettings');
+
     
             cFoto.appendChild(imagen);
+           
     
     
             cNombre.innerHTML = listaPersonas[i]['nombre_completo'];

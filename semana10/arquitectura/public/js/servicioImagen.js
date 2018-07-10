@@ -1,4 +1,5 @@
 let imagenUrl = '';
+
 $(function() {
     // Configure Cloudinary
     // with credentials available on
@@ -17,10 +18,10 @@ $(function() {
             // If NO error, log image data to console
             let id = result[0].public_id;
              console.log(id);
-            imagenUrl = 'https://res.cloudinary.com/pabskun/image/upload/' + id;
+            
             imagenUrl = processImage(id);
             console.log(imagenUrl);
-            //document.querySelector('#txtImagen').src = imagenUrl;
+            document.querySelector('#txtImagen').src = imagenUrl;
             return imagenUrl;
         });
     });
