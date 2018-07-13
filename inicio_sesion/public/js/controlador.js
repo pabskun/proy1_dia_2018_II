@@ -21,6 +21,7 @@ const inputEdad = document.querySelector('#txtEdad');
 const inputContrasenna = document.querySelector('#txtContrasenna');
 const inputConfirmacion = document.querySelector('#txtConfirmacion');
 const inputFiltro = document.querySelector('#txtFiltro');
+const selectRol = document.querySelector('#sltRol');
 
 inputFiltro.addEventListener('keyup' , function(){
     imprimirListaPersonas(inputFiltro.value)
@@ -36,7 +37,7 @@ function obtenerDatos(){
     let nEdad = Number(inputEdad.value);
     let sContrasenna = inputContrasenna.value;
     let sConfirmacion = inputConfirmacion.value;
-
+    let sRol = selectRol.value;
     
     
     bError = validar();
@@ -50,7 +51,7 @@ function obtenerDatos(){
         console.log('No se pudo registrar el usuario');
     }else{
         console.log(imagenUrl);
-        registrarPersona(sNombre, sEmail, sTelefono, nEdad, sContrasenna, imagenUrl);
+        registrarPersona(sNombre, sEmail, sTelefono, nEdad, sRol, sContrasenna, imagenUrl);
         swal({
             type : 'success',
             title : 'Registro exitoso',

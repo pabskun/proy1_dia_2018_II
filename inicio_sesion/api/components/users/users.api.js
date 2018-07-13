@@ -9,6 +9,7 @@ module.exports.registrar = function(req, res){
         correo : req.body.correo,
         telefono : req.body.telefono,
         edad : req.body.edad,
+        rol: req.body.rol,
         contrasenna : req.body.contrasenna ,
         foto : req.body.foto
     });

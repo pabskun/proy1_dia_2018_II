@@ -8,7 +8,7 @@ Responsabilidades del servicio
 'use strict';
 
 
-function registrarPersona(sNombre, sEmail, sTelefono, nEdad, sContrasenna, imagenUrl){
+function registrarPersona(sNombre, sEmail, sTelefono, nEdad, sRol, sContrasenna, imagenUrl){
     let respuesta = '';
     let peticion = $.ajax({
         url : 'http://localhost:4000/api/registrar_usuario',
@@ -21,6 +21,7 @@ function registrarPersona(sNombre, sEmail, sTelefono, nEdad, sContrasenna, image
             correo : sEmail,
             telefono : sTelefono,
             edad : nEdad,
+            rol: sRol,
             contrasenna : sContrasenna,
             foto : imagenUrl
         }
