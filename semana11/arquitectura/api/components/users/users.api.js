@@ -117,3 +117,22 @@ module.exports.agregar_titulo = function (req, res) {
     )
 };
 
+module.exports.buscar_usuario_por_id = function (req, res) {
+    userModel.findById({ _id: req.body._id }).then(
+        function (usuario) {
+            res.send(usuario);
+        }
+    );
+};
+
+module.exports.modificar_usuario = function (req, res) {
+    userModel.findByIdAndUpdate(req.body._id, { $set: req.body },
+        function (err, user) {
+            if (err) {
+                res.json({ success: false, msg: 'El usuario no se ha podido modificar. ' + handleError(err) });
+
+            } else {
+                res.json({ success: true, msg: 'Se ha actualizado correctamente. ' + res });
+            }
+        });
+};

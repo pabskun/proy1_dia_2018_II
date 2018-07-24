@@ -11,8 +11,12 @@ Responsabilidades del controlador
 let listaPersonas = obtenerListaPersonas();
 imprimirListaPersonas();
 const botonRegistrar = document.querySelector('#btnRegistrar');
+const botonActualizar = document.querySelector('#btnActualizar');
 
-botonRegistrar.addEventListener('click' , obtenerDatos);
+botonActualizar.hidden = true;
+
+botonRegistrar.addEventListener('click' , obtenerDatosRegistro);
+botonActualizar.addEventListener('click' , obtenerDatosActualizar);
 
 const inputNombre = document.querySelector('#txtNombre');
 const inputEmail = document.querySelector('#txtEmail');
@@ -21,13 +25,15 @@ const inputEdad = document.querySelector('#txtEdad');
 const inputContrasenna = document.querySelector('#txtContrasenna');
 const inputConfirmacion = document.querySelector('#txtConfirmacion');
 const inputFiltro = document.querySelector('#txtFiltro');
+const elementoImagen = document.querySelector('#txtImagen');
+const inputId = document.querySelector('#txtId');
 
 
 inputFiltro.addEventListener('keyup' , function(){
     imprimirListaPersonas(inputFiltro.value)
 });
 
-function obtenerDatos(){
+function obtenerDatosRegistro(){
     
     let bError = false;
 
@@ -64,6 +70,47 @@ function obtenerDatos(){
     }
     
 };
+
+function obtenerDatosActualizar(){
+    
+    let bError = false;
+
+    let sNombre = inputNombre.value;    
+    let sEmail = inputEmail.value;
+    let sTelefono = inputTelefono.value;
+    let nEdad = Number(inputEdad.value);
+    let _id = inputId.value;
+    
+
+    
+    
+    // bError = validar();
+    if(bError == true){
+        swal({
+            type : 'warning',
+            title : 'No se pudo registrar el usuario',
+            text: 'Por favor revise los campos en rojo',
+            confirmButtonText : 'Entendido'
+        });
+        console.log('No se pudo registrar el usuario');
+    }else{
+        
+        actualizarPersona(_id,sNombre, sEmail, sTelefono, nEdad, elementoImagen.src);
+        swal({
+            type : 'success',
+            title : 'Actualización exitosa',
+            text: 'El usuario se actualizó adecuadamente',
+            confirmButtonText : 'Entendido'
+        });
+        listaPersonas = obtenerListaPersonas();
+        imprimirListaPersonas();
+        limpiarFormulario();
+        botonRegistrar.hidden = false;
+        botonActualizar.hidden = true;
+
+    }
+    
+};
 function imprimirListaPersonas(pFiltro){
     
     let tbody = document.querySelector('#tblPersonas tbody');
@@ -96,6 +143,18 @@ function imprimirListaPersonas(pFiltro){
             cEmail.innerHTML = listaPersonas[i]['correo'];
             cTelefono.innerHTML = listaPersonas[i]['telefono'];
             cEdad.innerHTML = listaPersonas[i]['edad'];
+
+            //Se crean los componentes para actualizar
+            let botonModificar = document.createElement('a');
+            botonModificar.classList.add('fas');
+            botonModificar.classList.add('fa-pencil-alt');
+
+            botonModificar.dataset._id = listaPersonas[i]['_id'];
+
+            botonModificar.addEventListener('click', buscar_por_id);
+
+            cConfiguracion.appendChild(botonModificar);
+
 
            
 
@@ -168,7 +227,23 @@ function limpiarFormulario(){
     inputEdad.value = 0;
     inputContrasenna.value = '';
     inputConfirmacion.value = '';
+    elementoImagen.src = '';
 };
 
+function buscar_por_id(){
+    //Binding
+    let _id = this.dataset._id;
+    botonRegistrar.hidden = true;
+    botonActualizar.hidden = false;
+    let usuario = obtener_persona_por_id(_id);
+
+
+    inputNombre.value = usuario['nombre_completo'];    
+    inputEmail.value = usuario['correo'];
+    inputTelefono.value = usuario['telefono'];
+    inputEdad.value = usuario['edad'];
+    elementoImagen.src = usuario['foto'];
+    inputId.value = usuario['_id'];
+};
 
 

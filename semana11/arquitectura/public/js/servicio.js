@@ -39,7 +39,7 @@ function registrarPersona(sNombre, sEmail, sTelefono, nEdad, sContrasenna, image
 function obtenerListaPersonas(){
     let listaPersonas = [];
 
-    let respuesta = '';
+    
     let peticion = $.ajax({
         url : 'http://localhost:4000/api/listar_usuarios',
         type : 'get',
@@ -52,6 +52,60 @@ function obtenerListaPersonas(){
       });
     
       peticion.done(function(response){
+        listaPersonas = response;
+      });
+    
+      peticion.fail(function(response){
+       
+      });
+
+    
+    return listaPersonas;
+}
+
+function obtener_persona_por_id(pid){
+    let usuario = '';
+    let peticion = $.ajax({
+        url : 'http://localhost:4000/api/buscar_usuario_id',
+        type : 'post',
+        contentType : 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType : 'json',
+        async : false,
+        data:{
+            _id : pid
+        }
+      });
+    
+      peticion.done(function(response){
+        usuario = response;
+      });
+    
+      peticion.fail(function(response){
+       
+      });
+
+      return usuario;
+};
+
+function actualizarPersona(_pid,psNombre, psEmail, psTelefono, pnEdad, pimagen){
+    let respuesta = '';
+    let peticion = $.ajax({
+        url : 'http://localhost:4000/api/modificar_usuario',
+        type : 'post',
+        contentType : 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType : 'json',
+        async : false,
+        data:{
+            _id: _pid,
+            nombre_completo : psNombre,
+            correo : psEmail,
+            telefono : psTelefono,
+            edad : pnEdad,
+            foto : pimagen
+        }
+      });
+    
+      peticion.done(function(response){
        respuesta = response;
       });
     
@@ -60,7 +114,4 @@ function obtenerListaPersonas(){
       });
 
       return respuesta;
-    
-    return listaPersonas;
 }
-
