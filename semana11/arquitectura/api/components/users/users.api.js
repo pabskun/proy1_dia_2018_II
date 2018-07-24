@@ -117,9 +117,3 @@ module.exports.agregar_titulo = function (req, res) {
     )
 };
 
-module.exports.buscar_usuario_id = function (req, res) {
-    userModel.findById({_id:req.body.id}).then(
-        function (usuario) {
-            res.send(usuario);
-        });
-};

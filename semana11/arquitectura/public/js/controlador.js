@@ -21,7 +21,7 @@ const inputEdad = document.querySelector('#txtEdad');
 const inputContrasenna = document.querySelector('#txtContrasenna');
 const inputConfirmacion = document.querySelector('#txtConfirmacion');
 const inputFiltro = document.querySelector('#txtFiltro');
-const imagen = document.querySelector('#txtImagen');
+
 
 inputFiltro.addEventListener('keyup' , function(){
     imprimirListaPersonas(inputFiltro.value)
@@ -51,7 +51,7 @@ function obtenerDatos(){
         console.log('No se pudo registrar el usuario');
     }else{
         console.log(imagenUrl);
-        registrarPersona(sNombre, sEmail, sTelefono, nEdad, imagen.src);
+        registrarPersona(sNombre, sEmail, sTelefono, nEdad, sContrasenna, imagen.src);
         swal({
             type : 'success',
             title : 'Registro exitoso',
@@ -97,15 +97,7 @@ function imprimirListaPersonas(pFiltro){
             cTelefono.innerHTML = listaPersonas[i]['telefono'];
             cEdad.innerHTML = listaPersonas[i]['edad'];
 
-            //Íconos para editar
-            let aModificar = document.createElement('a');
-            aModificar.classList.add('fas');
-            aModificar.classList.add('fa-pen');
-            aModificar.id =  listaPersonas[i]['_id'];
-
-            aModificar.addEventListener('click', obtenerDatosEditar);
-
-            cConfiguracion.appendChild(aModificar);
+           
 
         }
         
@@ -178,16 +170,5 @@ function limpiarFormulario(){
     inputConfirmacion.value = '';
 };
 
-function obtenerDatosEditar(){
-    let id =  this.id;// se obtiene el id del usuario seleccionado
-    let usuario = obtenerPersonaPorId(id);
 
-    inputNombre.value =  usuario['nombre_completo'];
-    inputEmail.value = usuario['correo'];
-    inputTelefono.value = usuario['telefono'];
-    inputEdad.value = usuario['edad'];
-
-    imagen.src = usuario['foto'];
-
-};
 

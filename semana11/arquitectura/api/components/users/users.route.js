@@ -18,10 +18,6 @@ router.route('/listar_usuarios')
     users.listar(req, res);
 });
 
-//agregado
-router.route('/buscar_usuario_id')
-    .post(function(req,res){
-    users.buscar_usuario_id(req, res);
-})
+
 
 module.exports = router;

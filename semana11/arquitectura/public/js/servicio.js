@@ -8,7 +8,7 @@ Responsabilidades del servicio
 'use strict';
 
 
-function registrarPersona(sNombre, sEmail, sTelefono, nEdad, imagenUrl){
+function registrarPersona(sNombre, sEmail, sTelefono, nEdad, sContrasenna, imagenUrl){
     let respuesta = '';
     let peticion = $.ajax({
         url : 'http://localhost:4000/api/registrar_usuario',
@@ -64,26 +64,3 @@ function obtenerListaPersonas(){
     return listaPersonas;
 }
 
-function obtenerPersonaPorId(pid){
-    let respuesta = '';
-
-    let peticion = $.ajax({
-        url : 'http://localhost:4000/api/buscar_usuario_id',
-        type : 'post',
-        contentType : 'application/x-www-form-urlencoded; charset=utf-8',
-        dataType : 'json',
-        async : false,
-        data:{
-            id : pid
-        }
-      });
-    
-      peticion.done(function(response){
-       respuesta = response;
-      });
-    
-      peticion.fail(function(response){
-       
-      });
-      return respuesta
-};
