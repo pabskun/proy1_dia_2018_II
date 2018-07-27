@@ -28,4 +28,9 @@ router.route('/modificar_usuario')
         users.modificar_usuario(req, res);
     });
 
+router.route('/eliminar_usuario')
+    .post(function (req, res) {
+        users.eliminar_usuario(req, res);
+    });
+
 module.exports = router;

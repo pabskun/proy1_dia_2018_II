@@ -57,7 +57,7 @@ function obtenerDatosRegistro(){
         console.log('No se pudo registrar el usuario');
     }else{
         console.log(imagenUrl);
-        registrarPersona(sNombre, sEmail, sTelefono, nEdad, sContrasenna, imagen.src);
+        registrarPersona(sNombre, sEmail, sTelefono, nEdad, sContrasenna, elementoImagen.src);
         swal({
             type : 'success',
             title : 'Registro exitoso',
@@ -153,7 +153,16 @@ function imprimirListaPersonas(pFiltro){
 
             botonModificar.addEventListener('click', buscar_por_id);
 
+            let botonEliminar = document.createElement('a');
+            botonEliminar.classList.add('fas');
+            botonEliminar.classList.add('fa-trash-alt');
+
+            botonEliminar.dataset._id = listaPersonas[i]['_id'];
+
+            botonEliminar.addEventListener('click', remover_usuario);
+
             cConfiguracion.appendChild(botonModificar);
+            cConfiguracion.appendChild(botonEliminar);
 
 
            
@@ -247,3 +256,27 @@ function buscar_por_id(){
 };
 
 
+function remover_usuario(){
+    let _id = this.dataset._id;
+    swal({
+        title: 'Está seguro?',
+        text: "El usuario se eliminará permanentemente",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Eliminar!'
+      }).then((result) => {
+        if (result.value) {
+            eliminar_usuario(_id);
+            listaPersonas = obtenerListaPersonas();
+            imprimirListaPersonas();
+          swal(
+            'Eliminado!',
+            'El usuario ha sido eliminado con éxito',
+            'success'
+          )
+        }
+      });
+   
+}

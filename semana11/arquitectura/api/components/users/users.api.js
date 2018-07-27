@@ -136,3 +136,15 @@ module.exports.modificar_usuario = function (req, res) {
             }
         });
 };
+
+module.exports.eliminar_usuario = function (req, res) {
+    userModel.findByIdAndDelete(req.body._id,
+        function (err, user) {
+            if (err) {
+                res.json({ success: false, msg: 'El usuario no se ha podido eliminar. ' + handleError(err) });
+
+            } else {
+                res.json({ success: true, msg: 'Se ha eliminado correctamente. ' + res });
+            }
+        });
+};
